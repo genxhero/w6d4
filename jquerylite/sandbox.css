@@ -23,6 +23,13 @@ h1 {
   outline: none;
 }
 
+.added-class {
+  box-shadow: 3px 3px;
+  color: 	#FF1493;
+  text-decoration: underline;
+  text-shadow: 1px 1px #00FF00;
+}
+
 .button-container {
   display: flex;
   flex-direction: column;

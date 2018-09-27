@@ -28,6 +28,7 @@ class DOMNodeCollection {
 
   addClass(string) {
      //presumably append to the inner html or sonething
+
   }
 
   removeClass() {
@@ -44,11 +45,20 @@ class DOMNodeCollection {
   }
 
   parent() {
-
+       let newArr = [];
+    this.elArr.forEach(function(element) {
+      newArr = newArr.concat(Array.from(element.parentNode));
+    });
+    return new DOMNodeCollection(newArr);
   }
 
-  find(){
+  find(element){
+    let newArr = Array.from(elArr.querySelectorAll(element));
+    return new DOMNodeCollection(newArr);
+  }
 
+  remove() {
+    
   }
 
 
