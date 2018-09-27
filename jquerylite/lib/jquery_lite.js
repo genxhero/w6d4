@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class DOMNodeCollection {\n  constructor(elements) {\n    this.elArr = elements;\n  }\n\n  html(string){\n    if (!string) return elArr[0].innerHTML;\n    this.elArr.forEach(function(element) {\n      element.innerHTML = string;\n    });\n  }\n\n  empty() {\n    this.elArr.forEach(function(element) {\n      element.innerHTML = \"\";\n    });\n  }\n\n  append(string) {\n   \n  }\n}\n\nmodule.exports = DOMNodeCollection;\n\n\n//# sourceURL=webpack:///./lib/dom_node_collection.js?");
+eval("class DOMNodeCollection {\n  constructor(elements) {\n    this.elArr = elements;\n  }\n\n  html(string){\n    if (!string) return elArr[0].innerHTML;\n    this.elArr.forEach(function(element) {\n      element.innerHTML = string;\n    });\n  }\n\n  empty() {\n    this.elArr.forEach(function(element) {\n      element.innerHTML = \"\";\n    });\n  }\n\n  append(string) {\n    this.elArr.forEach(function(element) {\n      element.innerHTML += string;\n    });\n  }\n\n  attr() {\n\n  }\n\n  addClass(string) {\n     //presumably append to the inner html or sonething\n  }\n\n  removeClass() {\n    //I think we are trying to delete exact classes found in the inner html\n  }\n//TRAVERSAL SECTION\n  children() {\n   let newArr = [];\n   this.elArr.forEach(function(element) {\n     newArr = newArr.concat(Array.from(element.children));\n   });\n   let children = new DOMNodeCollection(newArr);\n   return children;\n  }\n\n  parent() {\n\n  }\n\n  find(){\n\n  }\n\n\n}\n\nmodule.exports = DOMNodeCollection;\n\n\n//# sourceURL=webpack:///./lib/dom_node_collection.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("class DOMNodeCollection {\n  constructor(elements) {\n    this.elArr = ele
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./lib/dom_node_collection.js\");\n\n window.$l = (selector) => {\n  console.log(\"this is only a test\");\n};\n\n\n//# sourceURL=webpack:///./lib/main.js?");
+eval("DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./lib/dom_node_collection.js\");\n\n\nwindow.$l = (selector) => {\n  console.log(\"this is only a test\");\n  let arr = [];\n  if (typeof(selector) === 'string'){\n    console.log('thanks for the string');\n    arr = arr.concat(Array.from(document.querySelectorAll(selector)));\n  } else {\n    console.log(\"Thanks for the HTML element\");\n     arr.push(selector);\n  }\n  return new DOMNodeCollection(arr);\n\n};\n//\n// We are now going to modify the core $l function.\n// It will receive one argument, but let's make it flexible.\n// If the argument received is a HTML element,\n// (i.e. an instanceof HTMLElement), you should\n// put it into an array and return an instance of\n// DOMNodeCollection.This will allow a HTMLElement native\n// element to be 'wrapped' in jQuery lite goodness.\n// So: our core function can receive either a single\n// HTMLElement or a string with a CSS selector and\n// in either case the return value will be a DOMNodeCollection.\n\n\n//# sourceURL=webpack:///./lib/main.js?");
 
 /***/ })
 
