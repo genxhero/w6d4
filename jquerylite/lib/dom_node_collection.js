@@ -45,22 +45,38 @@ class DOMNodeCollection {
   }
 
   parent() {
+
        let newArr = [];
     this.elArr.forEach(function(element) {
-      newArr = newArr.concat(Array.from(element.parentNode));
+      //if (!newArr.includes(element))
+      newArr.push(element.parentNode);
     });
     return new DOMNodeCollection(newArr);
   }
 
-  find(element){
-    let newArr = Array.from(elArr.querySelectorAll(element));
+  find(string){
+    let newArr = [];
+    this.elArr.forEach(function(element) {
+      //if (!newArr.includes(element))
+    newArr = newArr.concat(Array.from(element.querySelectorAll(string)));
+    });
+
     return new DOMNodeCollection(newArr);
   }
 
   remove() {
-    
+
   }
 
+  on(string, proc) {
+    this.elArr.forEach(function(element) {
+      proc(element);
+    });
+  }
+
+  off() {
+
+  }
 
 }
 
