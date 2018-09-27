@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class DOMNodeCollection {\n  constructor(elements) {\n    this.elArr = elements;\n  }\n\n  html(){\n  }\n\n  empty() {\n  }\n\n  append() {\n    \n  }\n}\n\nmodule.exports = DOMNodeCollection;\n\n\n//# sourceURL=webpack:///./lib/dom_node_collection.js?");
+eval("class DOMNodeCollection {\n  constructor(elements) {\n    this.elArr = elements;\n  }\n\n  html(string){\n    if (!string) return elArr[0].innerHTML;\n    this.elArr.forEach(function(element) {\n      element.innerHTML = string;\n    });\n  }\n\n  empty() {\n    this.elArr.forEach(function(element) {\n      element.innerHTML = \"\";\n    });\n  }\n\n  append(string) {\n   \n  }\n}\n\nmodule.exports = DOMNodeCollection;\n\n\n//# sourceURL=webpack:///./lib/dom_node_collection.js?");
 
 /***/ }),
 

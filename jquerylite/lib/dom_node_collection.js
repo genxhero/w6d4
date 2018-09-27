@@ -3,14 +3,21 @@ class DOMNodeCollection {
     this.elArr = elements;
   }
 
-  html(){
+  html(string){
+    if (!string) return elArr[0].innerHTML;
+    this.elArr.forEach(function(element) {
+      element.innerHTML = string;
+    });
   }
 
   empty() {
+    this.elArr.forEach(function(element) {
+      element.innerHTML = "";
+    });
   }
 
-  append() {
-    
+  append(string) {
+   
   }
 }
 
