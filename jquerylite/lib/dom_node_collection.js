@@ -75,6 +75,7 @@ class DOMNodeCollection {
     //also a
     let attrString = `on${string}`;
     this.elArr.forEach(function(element) {
+
        element[attrString] = proc(element);
     });
   }
@@ -87,5 +88,10 @@ class DOMNodeCollection {
   }
 
 }
+
+
+const  pinkify = function (el) {
+  el["style"]["color"] = "pink";
+};
 
 module.exports = DOMNodeCollection;
