@@ -28,6 +28,7 @@ class DOMNodeCollection {
 
   addClass(string) {
      //presumably append to the inner html or sonething
+     //className= string?
 
   }
 
@@ -69,13 +70,20 @@ class DOMNodeCollection {
   }
 
   on(string, proc) {
+    // $("ul").on("click", () => {...})
+    //So i need to take a string which will determine the action
+    //also a
+    let attrString = `on${string}`;
     this.elArr.forEach(function(element) {
-      proc(element);
+       element[attrString] = proc(element);
     });
   }
 
   off() {
-
+    let attrString = `on${string}`;
+    this.elArr.forEach(function(element) {
+       element[attrString] = null;
+    });
   }
 
 }
